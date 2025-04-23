@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us</title>
+        <link rel="stylesheet" href="Tek.css">
+        <link rel="stylesheet" href="tex2.css">
+        <link rel="stylesheet" href="contact.css"> 
+    </head>
+
+    <body>
+        <header class="site-header">
+            <img class="site-logo" src="logo.jpg" alt="TekLex Logo">
+            <div class="header-container">
+                <h1 class="site-title">TekLex</h1>
+                <nav class="main-nav">
+                    <div class="navbar">
+                        <a href="index.html">Home</a>
+                        <a href="aboutus.html">About Us</a>
+                        <a href="OurServices.html">Our Services</a>
+                        <a href="form.html">Customer Feedback</a>
+                        <a href="contact.html">Contact Us</a> 
+                      </div>
+                </nav>
+            </div>
+        </header>
+
+        <h1 class="page-title">Just a little more about yourself</h1>
+        <form id="service-form">
+            <label for="Name">Name</label>
+            <input type="text" id="Name" name="Name" required />
+
+            <label for="Email">Email</label>
+            <input type="text" id="Email" name="Email" required />
+
+            <label for="Company">Company</label>
+            <input type="text" id="Company" name="Company" required />
+
+            <label for="Services">Services</label>
+            <select name="Services" id="Services">
+                <option value="Data Visualizations">Data Visualizations</option>
+                <option value="Predictive Modeling & Trending Analysis">Predictive Modeling & Trending Analysis</option>
+                <option value="Business Intelligence & Strategy">Business Intelligence & Strategy</option>
+                <option value="Customized Data Solutions">Customized Data Solutions</option>
+            </select>
+
+            <fieldset>
+                <legend>Industry</legend>
+                <label for="Technology">Technology</label>
+                <input type="checkbox" id="Technology" name="Industry" value="Technology" />
+                
+                <label for="Finance and Accounting">Finance and Accounting</label>
+                <input type="checkbox" id="Finance and Accounting" name="Industry" value="Finance and Accounting" />
+
+                <label for="Machinery">Machinery</label>
+                <input type="checkbox" id="Machinery" name="Industry" value="Machinery" />
+            
+                <label for="Life Sciences">Life Sciences</label>
+                <input type="checkbox" id="Life Sciences" name="Industry" value="Life Sciences" />
+              
+                <label for="Production">Production</label>
+                <input type="checkbox" id="Production" name="Industry" value="Production" />
+              
+            </fieldset>
+
+            <button type="submit">Submit Contact Form</button>
+        </form>
+
+        <script>
+            document.getElementById("service-form").addEventListener("submit", (event)=> {
+                event.preventDefault();
+            
+ 
+            if (document.getElementById("Technology").checked){
+                alert("Thank you for choosing Technology Services. We will be in touch soon.");
+            }
+            if (document.getElementById("Finance and Accounting").checked){
+                alert("Thank you for choosing Financing and Accounting Services. We will be in touch soon.");
+            }
+ 
+            if (document.getElementById("Life Sciences").checked){
+                alert("Thank you for choosing Life Sciences Services. We will be in touch soon.");
+            }
+ 
+            if (document.getElementById("Machinery").checked){
+                alert("Thank you for choosing Machinery Services. We will be in touch soon.");
+            }
+ 
+            if (document.getElementById("Production").checked){
+                alert("Thank you for choosing Production Services. We will be in touch soon.");
+            };
+ 
+        });
+        </script>
+        <!-- we dynamically get the input fields from the previous page. We populate 2 of the fiels for any last minute changes
+         and collect the new data on screen -->
+        
+        <script>
+            const name = localStorage.getItem('name') || '';
+            const email = localStorage.getItem('email') || '';
+            const feedback = localStorage.getItem('feedback') || '';
+
+            document.getElementById('Name').value = name;
+            document.getElementById('Email').value = email;
+
+            document.getElementById('service-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                localStorage.setItem('name', document.getElementById('Name').value);
+                localStorage.setItem('email', document.getElementById('Email').value);
+                localStorage.setItem('company', document.getElementById('Company').value);
+                localStorage.setItem('services', document.getElementById('Services').value);
+                // Since industries could have multiple values, we use arrays to acount for that
+                // I got the code from https://stackoverflow.com/questions/7459704/in-javascript-what-is-the-best-way-to-convert-a-nodelist-to-an-array
+
+                const industries = Array.from(document.querySelectorAll('input[name="Industry"]:checked'))
+                    .map(checkbox => checkbox.value)
+                    .join(', ');
+                localStorage.setItem('industries', industries);
+
+                window.location.href = 'confirmation.html';
+            });
+        </script> 
+    </body>
+</html>

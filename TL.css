@@ -1,0 +1,41 @@
+
+:root {
+    --base-margin: 12px;
+    --base-padding: 10px;
+    --header-bg: #00c62e; 
+    --text-color: #3d3d3d;
+    --link-color: #007bff;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #00c62e;
+    text-align: center;
+}
+header {
+    background: #00c62e;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+section {
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
