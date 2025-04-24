@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekLex - Data Insights</title>
+    <link rel="stylesheet" href="Tek.css">
+    <link rel="stylesheet" href="tex2.css">
+</head>
+<body class="main-content">
+    <header class="site-header">
+        <img class="site-logo" src="logo.jpg" alt="TekLex Logo">
+        <div class="header-container">
+            <h1 class="site-title">TekLex</h1>
+            <nav class="main-nav">
+                <div class="navbar">
+                    <a href="index.html">Home</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="OurServices.html">Our Services</a>
+                    <a href="form.html">Customer Feedback</a>
+                    <a href="contact.html">Contact Us</a> 
+                  </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="form">
+            <h2>Customer Feedback</h2>
+            <form id="feedbackForm">
+                <section>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </section>
+                <section>
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4" ></textarea>
+                </section>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <script>
+            // When the form is submitted, store the data in localStorage
+            // and redirect to the contact page
+            document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                localStorage.setItem('name', document.getElementById('name').value);
+                localStorage.setItem('email', document.getElementById('email').value);
+                localStorage.setItem('feedback', document.getElementById('feedback').value);
+
+                window.location.href = 'contact.html';
+            });
+        </script>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="copyright">&copy; 2024 TekLex. Data Insights.</p>
+        </div>
+    </footer>
+</body>
+</html>
